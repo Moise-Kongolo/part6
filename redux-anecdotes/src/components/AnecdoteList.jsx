@@ -6,9 +6,14 @@ const AnecdoteList = () => {
 
   // use memoized selectors to make the warning in the console disappear,
   // instead of useSelector
-  const anecdotes = useSelector((state) =>
-    [...state].sort((a, b) => b.votes - a.votes),
-  );
+  const anecdotes = useSelector((state) => {
+    if (state.filter === "") {
+      return [...state.anecdote].sort((a, b) => b.votes - a.votes);
+    }
+    return [...state.anecdote].filter((ane) =>
+      ane.content.includes(state.filter),
+    );
+  });
 
   const vote = (id) => {
     dispatch(addVote(id));
