@@ -6,8 +6,6 @@ import {
 } from "../reducers/notificationReducer";
 
 const AnecdoteList = () => {
-  const dispatch = useDispatch();
-
   // use memoized selectors to make the warning in the console disappear,
   // instead of useSelector
   const anecdotes = useSelector((state) => {
@@ -18,6 +16,8 @@ const AnecdoteList = () => {
       ane.content.includes(state.filter),
     );
   });
+
+  const dispatch = useDispatch();
 
   const vote = (id) => {
     dispatch(addVote(id));

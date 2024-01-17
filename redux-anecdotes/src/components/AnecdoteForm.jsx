@@ -4,6 +4,7 @@ import {
   hideNotification,
   showNotification,
 } from "../reducers/notificationReducer";
+import anecdoteService from "../services/anecdotes"
 
 const NewAnecdote = () => {
   const dispatch = useDispatch();
